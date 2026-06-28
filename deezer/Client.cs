@@ -19,8 +19,30 @@ namespace deezer
             var response = await _httpClient.GetAsync(url);
             string json = await response.Content.ReadAsStringAsync();
 
-            var result = JsonConvert.DeserializeObject<Models.DeezerResponse>(json);
+            var result = JsonConvert.DeserializeObject<Models.DeezerArtistResponse>(json);
             return result?.Data ?? new List<Models.Artist>();
+        }
+
+        public async Task<List<Models.Album>> SearchAlbumAsync(string query)
+        {
+            string url = $"https://api.deezer.com/search/album?q={query}&limit=30";
+
+            var response = await _httpClient.GetAsync(url);
+            string json = await response.Content.ReadAsStringAsync();
+
+            var result = JsonConvert.DeserializeObject<Models.DeezerAlbumResponse>(json);
+            return result?.Data ?? new List<Models.Album>();
+        }
+
+        public async Task<List<Models.Track>> SearchTrackAsync(string query)
+        {
+            string url = $"https://api.deezer.com/search/track?q={query}&limit=30";
+
+            var response = await _httpClient.GetAsync(url);
+            string json = await response.Content.ReadAsStringAsync();
+
+            var result = JsonConvert.DeserializeObject<Models.DeezerTrackResponse>(json);
+            return result?.Data ?? new List<Models.Track>();
         }
     }
 }

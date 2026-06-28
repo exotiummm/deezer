@@ -58,5 +58,85 @@ namespace deezer
                 }
             }
         }
+
+        private async void btnAlbumSearch_Click(object sender, EventArgs e)
+        {
+            string query = tbAlbum.Text.Trim();
+
+            if (string.IsNullOrEmpty(query))
+            {
+                MessageBox.Show("Введите название альбома!");
+            }
+            else
+            {
+                btnAlbumSearch.Enabled = false;
+                lbAlbums.Items.Clear();
+
+                try
+                {
+                    List<Models.Album> albums = await _client.SearchAlbumAsync(query);
+
+                    if (albums.Count == 0)
+                    {
+                        lbAlbums.Items.Add("Ничего не найдено");
+                    }
+                    else
+                    {
+                        foreach (var album in albums)
+                        {
+                            lbAlbums.Items.Add($"{album.Title}, песен: {album.Nb_Tracks}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка: {ex.Message}");
+                }
+                finally
+                {
+                    btnAlbumSearch.Enabled = true;
+                }
+            }
+        }
+
+        private async void btnTrackSearch_Click(object sender, EventArgs e)
+        {
+            string query = tbTrack.Text.Trim();
+
+            if (string.IsNullOrEmpty(query))
+            {
+                MessageBox.Show("Введите название песни!");
+            }
+            else
+            {
+                btnTrackSearch.Enabled = false;
+                lbTracks.Items.Clear();
+
+                try
+                {
+                    List<Models.Track> tracks = await _client.SearchTrackAsync(query);
+
+                    if (tracks.Count == 0)
+                    {
+                        lbTracks.Items.Add("Ничего не найдено");
+                    }
+                    else
+                    {
+                        foreach (var track in tracks)
+                        {
+                            lbTracks.Items.Add($"{track.Title}, длина: {track.MinuteDuration}");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка: {ex.Message}");
+                }
+                finally
+                {
+                    btnTrackSearch.Enabled = true;
+                }
+            }
+        }
     }
 }
