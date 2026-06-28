@@ -1,0 +1,41 @@
+# vs
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.slnx.docstates
+*.csproj.user
+bin/
+obj/
+.vs/
+.vscode/
+
+# build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+[Bb]in/
+[Oo]bj/
+
+# nuget packages
+*.nupkg
+*.nuget.props
+*.nuget.targets
+packages/
+*.packages.config
+
+# rider
+.idea/
+*.iml
+
+# user-specific files
+*.rsuser
+*.dbmdl
+*.db
+
+# personal settings
+appsettings.json
+appsettings.Development.json
+secrets.json
