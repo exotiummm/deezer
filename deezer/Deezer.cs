@@ -21,7 +21,7 @@ namespace deezer
 
         private async void btnArtistSearch_Click(object sender, EventArgs e)
         {
-            string query = tbArtist.Text.Trim();
+            string query = tbArtistAlbum.Text.Trim();
 
             if (string.IsNullOrEmpty(query))
             {
@@ -30,7 +30,7 @@ namespace deezer
             else
             {
                 btnArtistSearch.Enabled = false;
-                lbArtists.Items.Clear();
+                lbArtistsAlbums.Items.Clear();
 
                 try
                 {
@@ -38,13 +38,13 @@ namespace deezer
 
                     if (artists.Count == 0)
                     {
-                        lbArtists.Items.Add("Ничего не найдено");
+                        lbArtistsAlbums.Items.Add("Ничего не найдено");
                     }
                     else
                     {
                         foreach (var artist in artists)
                         {
-                            lbArtists.Items.Add(artist);
+                            lbArtistsAlbums.Items.Add(artist);
                         }
                     }
                 }
@@ -61,7 +61,7 @@ namespace deezer
 
         private async void btnAlbumSearch_Click(object sender, EventArgs e)
         {
-            string query = tbAlbum.Text.Trim();
+            string query = tbArtistAlbum.Text.Trim();
 
             if (string.IsNullOrEmpty(query))
             {
@@ -70,7 +70,7 @@ namespace deezer
             else
             {
                 btnAlbumSearch.Enabled = false;
-                lbAlbums.Items.Clear();
+                lbArtistsAlbums.Items.Clear();
 
                 try
                 {
@@ -78,13 +78,13 @@ namespace deezer
 
                     if (albums.Count == 0)
                     {
-                        lbAlbums.Items.Add("Ничего не найдено");
+                        lbArtistsAlbums.Items.Add("Ничего не найдено");
                     }
                     else
                     {
                         foreach (var album in albums)
                         {
-                            lbAlbums.Items.Add(album);
+                            lbArtistsAlbums.Items.Add(album);
                         }
                     }
                 }
