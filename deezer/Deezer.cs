@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static deezer.Models;
 
 namespace deezer
 {
@@ -21,7 +23,7 @@ namespace deezer
 
         private async void btnArtistSearch_Click(object sender, EventArgs e)
         {
-            string query = tbArtist.Text.Trim();
+            string query = tbSearchBar.Text.Trim();
 
             if (string.IsNullOrEmpty(query))
             {
@@ -30,7 +32,7 @@ namespace deezer
             else
             {
                 btnArtistSearch.Enabled = false;
-                lbArtists.Items.Clear();
+                lbArtistsAlbums.Items.Clear();
 
                 try
                 {
@@ -38,13 +40,13 @@ namespace deezer
 
                     if (artists.Count == 0)
                     {
-                        lbArtists.Items.Add("Ничего не найдено");
+                        lbArtistsAlbums.Items.Add("Ничего не найдено");
                     }
                     else
                     {
                         foreach (var artist in artists)
                         {
-                            lbArtists.Items.Add($"{artist.Name}, фанатов: {artist.Fans}");
+                            lbArtistsAlbums.Items.Add(artist);
                         }
                     }
                 }
@@ -61,7 +63,7 @@ namespace deezer
 
         private async void btnAlbumSearch_Click(object sender, EventArgs e)
         {
-            string query = tbAlbum.Text.Trim();
+            string query = tbSearchBar.Text.Trim();
 
             if (string.IsNullOrEmpty(query))
             {
@@ -70,7 +72,7 @@ namespace deezer
             else
             {
                 btnAlbumSearch.Enabled = false;
-                lbAlbums.Items.Clear();
+                lbArtistsAlbums.Items.Clear();
 
                 try
                 {
@@ -78,13 +80,13 @@ namespace deezer
 
                     if (albums.Count == 0)
                     {
-                        lbAlbums.Items.Add("Ничего не найдено");
+                        lbArtistsAlbums.Items.Add("Ничего не найдено");
                     }
                     else
                     {
                         foreach (var album in albums)
                         {
-                            lbAlbums.Items.Add($"{album.Title}, песен: {album.Nb_Tracks}");
+                            lbArtistsAlbums.Items.Add(album);
                         }
                     }
                 }
@@ -101,7 +103,7 @@ namespace deezer
 
         private async void btnTrackSearch_Click(object sender, EventArgs e)
         {
-            string query = tbTrack.Text.Trim();
+            string query = tbSearchBar.Text.Trim();
 
             if (string.IsNullOrEmpty(query))
             {
@@ -124,7 +126,67 @@ namespace deezer
                     {
                         foreach (var track in tracks)
                         {
-                            lbTracks.Items.Add($"{track.Title}, длина: {track.MinuteDuration}");
+                            lbTracks.Items.Add(track);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка: {ex.Message}");
+                }
+                finally
+                {
+                    btnTrackSearch.Enabled = true;
+                }
+            }
+        }
+
+        private void lbTracks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbTracks.SelectedIndex < 0)
+            {
+                return;
+            }
+
+            Models.Track selectedTrack = (Models.Track)lbTracks.SelectedItem;
+
+            if (!string.IsNullOrEmpty(selectedTrack.Preview))
+            {
+                webBrowserPreview.Url = new Uri(selectedTrack.Preview);
+            }
+            else
+            {
+                MessageBox.Show("У данной песни нет превью");
+            }
+        }
+
+        private async void lbArtistsAlbums_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            if (lbArtistsAlbums.SelectedIndex < 0)
+            {
+                return;
+            }
+
+            lbTracks.Items.Clear();
+            var selectedModel = lbArtistsAlbums.SelectedItem;
+            
+            if (selectedModel is Models.Album album)
+            {
+                try
+                {
+                    btnTrackSearch.Enabled = false;
+
+                    List<Models.Track> tracks = await _client.LoadAlbumTracklist(album.Id);
+
+                    if (tracks.Count == 0)
+                    {
+                        lbTracks.Items.Add("Ничего не найдено");
+                    }
+                    else
+                    {
+                        foreach (var track in tracks)
+                        {
+                            lbTracks.Items.Add(track);
                         }
                     }
                 }

@@ -28,118 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tbArtist = new System.Windows.Forms.TextBox();
+            this.tbSearchBar = new System.Windows.Forms.TextBox();
             this.btnArtistSearch = new System.Windows.Forms.Button();
-            this.lbArtists = new System.Windows.Forms.ListBox();
-            this.lbAlbums = new System.Windows.Forms.ListBox();
+            this.lbArtistsAlbums = new System.Windows.Forms.ListBox();
             this.btnAlbumSearch = new System.Windows.Forms.Button();
-            this.tbAlbum = new System.Windows.Forms.TextBox();
             this.lbTracks = new System.Windows.Forms.ListBox();
             this.btnTrackSearch = new System.Windows.Forms.Button();
-            this.tbTrack = new System.Windows.Forms.TextBox();
+            this.webBrowserPreview = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
-            // tbArtist
+            // tbSearchBar
             // 
-            this.tbArtist.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbArtist.Location = new System.Drawing.Point(13, 12);
-            this.tbArtist.Name = "tbArtist";
-            this.tbArtist.Size = new System.Drawing.Size(432, 36);
-            this.tbArtist.TabIndex = 0;
+            this.tbSearchBar.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbSearchBar.Location = new System.Drawing.Point(13, 12);
+            this.tbSearchBar.Name = "tbSearchBar";
+            this.tbSearchBar.Size = new System.Drawing.Size(657, 36);
+            this.tbSearchBar.TabIndex = 0;
             // 
             // btnArtistSearch
             // 
             this.btnArtistSearch.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btnArtistSearch.Location = new System.Drawing.Point(13, 54);
             this.btnArtistSearch.Name = "btnArtistSearch";
-            this.btnArtistSearch.Size = new System.Drawing.Size(432, 42);
+            this.btnArtistSearch.Size = new System.Drawing.Size(208, 42);
             this.btnArtistSearch.TabIndex = 1;
             this.btnArtistSearch.Text = "Найти исполнителя";
             this.btnArtistSearch.UseVisualStyleBackColor = true;
             this.btnArtistSearch.Click += new System.EventHandler(this.btnArtistSearch_Click);
             // 
-            // lbArtists
+            // lbArtistsAlbums
             // 
-            this.lbArtists.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbArtists.FormattingEnabled = true;
-            this.lbArtists.ItemHeight = 18;
-            this.lbArtists.Location = new System.Drawing.Point(13, 102);
-            this.lbArtists.Name = "lbArtists";
-            this.lbArtists.Size = new System.Drawing.Size(432, 544);
-            this.lbArtists.TabIndex = 2;
-            // 
-            // lbAlbums
-            // 
-            this.lbAlbums.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbAlbums.FormattingEnabled = true;
-            this.lbAlbums.ItemHeight = 18;
-            this.lbAlbums.Location = new System.Drawing.Point(451, 102);
-            this.lbAlbums.Name = "lbAlbums";
-            this.lbAlbums.Size = new System.Drawing.Size(432, 544);
-            this.lbAlbums.TabIndex = 5;
+            this.lbArtistsAlbums.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbArtistsAlbums.FormattingEnabled = true;
+            this.lbArtistsAlbums.ItemHeight = 18;
+            this.lbArtistsAlbums.Location = new System.Drawing.Point(13, 102);
+            this.lbArtistsAlbums.Name = "lbArtistsAlbums";
+            this.lbArtistsAlbums.Size = new System.Drawing.Size(320, 544);
+            this.lbArtistsAlbums.TabIndex = 2;
+            this.lbArtistsAlbums.SelectedIndexChanged += new System.EventHandler(this.lbArtistsAlbums_SelectedIndexChanged);
             // 
             // btnAlbumSearch
             // 
             this.btnAlbumSearch.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnAlbumSearch.Location = new System.Drawing.Point(451, 54);
+            this.btnAlbumSearch.Location = new System.Drawing.Point(227, 54);
             this.btnAlbumSearch.Name = "btnAlbumSearch";
-            this.btnAlbumSearch.Size = new System.Drawing.Size(432, 42);
+            this.btnAlbumSearch.Size = new System.Drawing.Size(218, 42);
             this.btnAlbumSearch.TabIndex = 4;
             this.btnAlbumSearch.Text = "Найти альбом";
             this.btnAlbumSearch.UseVisualStyleBackColor = true;
             this.btnAlbumSearch.Click += new System.EventHandler(this.btnAlbumSearch_Click);
-            // 
-            // tbAlbum
-            // 
-            this.tbAlbum.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbAlbum.Location = new System.Drawing.Point(451, 12);
-            this.tbAlbum.Name = "tbAlbum";
-            this.tbAlbum.Size = new System.Drawing.Size(432, 36);
-            this.tbAlbum.TabIndex = 3;
             // 
             // lbTracks
             // 
             this.lbTracks.Font = new System.Drawing.Font("Bahnschrift Condensed", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbTracks.FormattingEnabled = true;
             this.lbTracks.ItemHeight = 18;
-            this.lbTracks.Location = new System.Drawing.Point(889, 102);
+            this.lbTracks.Location = new System.Drawing.Point(339, 102);
             this.lbTracks.Name = "lbTracks";
-            this.lbTracks.Size = new System.Drawing.Size(432, 544);
+            this.lbTracks.Size = new System.Drawing.Size(331, 544);
             this.lbTracks.TabIndex = 8;
+            this.lbTracks.SelectedIndexChanged += new System.EventHandler(this.lbTracks_SelectedIndexChanged);
             // 
             // btnTrackSearch
             // 
             this.btnTrackSearch.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnTrackSearch.Location = new System.Drawing.Point(889, 54);
+            this.btnTrackSearch.Location = new System.Drawing.Point(451, 54);
             this.btnTrackSearch.Name = "btnTrackSearch";
-            this.btnTrackSearch.Size = new System.Drawing.Size(432, 42);
+            this.btnTrackSearch.Size = new System.Drawing.Size(219, 42);
             this.btnTrackSearch.TabIndex = 7;
             this.btnTrackSearch.Text = "Найти песню";
             this.btnTrackSearch.UseVisualStyleBackColor = true;
             this.btnTrackSearch.Click += new System.EventHandler(this.btnTrackSearch_Click);
             // 
-            // tbTrack
+            // webBrowserPreview
             // 
-            this.tbTrack.Font = new System.Drawing.Font("Bahnschrift", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbTrack.Location = new System.Drawing.Point(889, 12);
-            this.tbTrack.Name = "tbTrack";
-            this.tbTrack.Size = new System.Drawing.Size(432, 36);
-            this.tbTrack.TabIndex = 6;
+            this.webBrowserPreview.Location = new System.Drawing.Point(1298, 651);
+            this.webBrowserPreview.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserPreview.Name = "webBrowserPreview";
+            this.webBrowserPreview.Size = new System.Drawing.Size(20, 20);
+            this.webBrowserPreview.TabIndex = 9;
             // 
             // Deezer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1330, 668);
+            this.ClientSize = new System.Drawing.Size(680, 655);
+            this.Controls.Add(this.webBrowserPreview);
             this.Controls.Add(this.lbTracks);
             this.Controls.Add(this.btnTrackSearch);
-            this.Controls.Add(this.tbTrack);
-            this.Controls.Add(this.lbAlbums);
             this.Controls.Add(this.btnAlbumSearch);
-            this.Controls.Add(this.tbAlbum);
-            this.Controls.Add(this.lbArtists);
+            this.Controls.Add(this.lbArtistsAlbums);
             this.Controls.Add(this.btnArtistSearch);
-            this.Controls.Add(this.tbArtist);
+            this.Controls.Add(this.tbSearchBar);
             this.Name = "Deezer";
             this.Text = "Deezer Search";
             this.ResumeLayout(false);
@@ -149,15 +129,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox tbArtist;
+        private System.Windows.Forms.TextBox tbSearchBar;
         private System.Windows.Forms.Button btnArtistSearch;
-        private System.Windows.Forms.ListBox lbArtists;
-        private System.Windows.Forms.ListBox lbAlbums;
+        private System.Windows.Forms.ListBox lbArtistsAlbums;
         private System.Windows.Forms.Button btnAlbumSearch;
-        private System.Windows.Forms.TextBox tbAlbum;
         private System.Windows.Forms.ListBox lbTracks;
         private System.Windows.Forms.Button btnTrackSearch;
-        private System.Windows.Forms.TextBox tbTrack;
+        private System.Windows.Forms.WebBrowser webBrowserPreview;
     }
 }
 
