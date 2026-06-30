@@ -21,7 +21,7 @@ namespace deezer
 
         private async void btnArtistSearch_Click(object sender, EventArgs e)
         {
-            string query = tbArtistAlbum.Text.Trim();
+            string query = tbSearchBar.Text.Trim();
 
             if (string.IsNullOrEmpty(query))
             {
@@ -61,7 +61,7 @@ namespace deezer
 
         private async void btnAlbumSearch_Click(object sender, EventArgs e)
         {
-            string query = tbArtistAlbum.Text.Trim();
+            string query = tbSearchBar.Text.Trim();
 
             if (string.IsNullOrEmpty(query))
             {
@@ -101,7 +101,7 @@ namespace deezer
 
         private async void btnTrackSearch_Click(object sender, EventArgs e)
         {
-            string query = tbTrack.Text.Trim();
+            string query = tbSearchBar.Text.Trim();
 
             if (string.IsNullOrEmpty(query))
             {
