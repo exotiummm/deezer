@@ -37,6 +37,7 @@
             this.lbTracks = new System.Windows.Forms.ListBox();
             this.btnTrackSearch = new System.Windows.Forms.Button();
             this.tbTrack = new System.Windows.Forms.TextBox();
+            this.webBrowserPreview = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
             // 
             // tbArtist
@@ -106,6 +107,7 @@
             this.lbTracks.Name = "lbTracks";
             this.lbTracks.Size = new System.Drawing.Size(432, 544);
             this.lbTracks.TabIndex = 8;
+            this.lbTracks.SelectedIndexChanged += new System.EventHandler(this.lbTracks_SelectedIndexChanged);
             // 
             // btnTrackSearch
             // 
@@ -126,11 +128,20 @@
             this.tbTrack.Size = new System.Drawing.Size(432, 36);
             this.tbTrack.TabIndex = 6;
             // 
+            // webBrowserPreview
+            // 
+            this.webBrowserPreview.Location = new System.Drawing.Point(1301, 652);
+            this.webBrowserPreview.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserPreview.Name = "webBrowserPreview";
+            this.webBrowserPreview.Size = new System.Drawing.Size(20, 20);
+            this.webBrowserPreview.TabIndex = 9;
+            // 
             // Deezer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1330, 668);
+            this.Controls.Add(this.webBrowserPreview);
             this.Controls.Add(this.lbTracks);
             this.Controls.Add(this.btnTrackSearch);
             this.Controls.Add(this.tbTrack);
@@ -158,6 +169,7 @@
         private System.Windows.Forms.ListBox lbTracks;
         private System.Windows.Forms.Button btnTrackSearch;
         private System.Windows.Forms.TextBox tbTrack;
+        private System.Windows.Forms.WebBrowser webBrowserPreview;
     }
 }
 

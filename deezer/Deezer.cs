@@ -124,7 +124,8 @@ namespace deezer
                     {
                         foreach (var track in tracks)
                         {
-                            lbTracks.Items.Add($"{track.Title}, длина: {track.MinuteDuration}");
+                            //lbTracks.Items.Add($"{track.Title}, длина: {track.MinuteDuration}");
+                            lbTracks.Items.Add(track);
                         }
                     }
                 }
@@ -136,6 +137,25 @@ namespace deezer
                 {
                     btnTrackSearch.Enabled = true;
                 }
+            }
+        }
+
+        private void lbTracks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lbTracks.SelectedIndex < 0)
+            {
+                return;
+            }
+
+            Models.Track selectedTrack = (Models.Track)lbTracks.SelectedItem;
+
+            if (!string.IsNullOrEmpty(selectedTrack.Preview))
+            {
+                webBrowserPreview.Url = new Uri(selectedTrack.Preview);
+            }
+            else
+            {
+                MessageBox.Show("У данной песни нет превью");
             }
         }
     }

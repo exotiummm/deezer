@@ -85,6 +85,11 @@ namespace deezer
             {
                 get { return TimeSpan.FromSeconds(Duration).ToString(@"m\:ss"); }
             }
+
+            public override string ToString()
+            {
+                return $"{Title}, длина: {MinuteDuration}";
+            }
         }
     }
 }
