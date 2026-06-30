@@ -65,6 +65,7 @@
             this.lbArtistsAlbums.Name = "lbArtistsAlbums";
             this.lbArtistsAlbums.Size = new System.Drawing.Size(320, 544);
             this.lbArtistsAlbums.TabIndex = 2;
+            this.lbArtistsAlbums.SelectedIndexChanged += new System.EventHandler(this.lbArtistsAlbums_SelectedIndexChanged);
             // 
             // btnAlbumSearch
             // 

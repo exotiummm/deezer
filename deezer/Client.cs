@@ -44,5 +44,16 @@ namespace deezer
             var result = JsonConvert.DeserializeObject<Models.DeezerTrackResponse>(json);
             return result?.Data ?? new List<Models.Track>();
         }
+
+        public async Task<List<Models.Track>> LoadAlbumTracklist(int albumId)
+        {
+            string url = $"https://api.deezer.com/album/{albumId}/tracks";
+
+            var response = await _httpClient.GetAsync(url);
+            string json = await response.Content.ReadAsStringAsync();
+
+            var result = JsonConvert.DeserializeObject<Models.DeezerTrackResponse>(json);
+            return result?.Data ?? new List<Models.Track>();
+        }
     }
 }

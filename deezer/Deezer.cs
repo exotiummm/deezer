@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static deezer.Models;
 
 namespace deezer
 {
@@ -155,6 +157,47 @@ namespace deezer
             else
             {
                 MessageBox.Show("У данной песни нет превью");
+            }
+        }
+
+        private async void lbArtistsAlbums_SelectedIndexChanged(object sender, EventArgs e)
+        {            
+            if (lbArtistsAlbums.SelectedIndex < 0)
+            {
+                return;
+            }
+
+            lbTracks.Items.Clear();
+            var selectedModel = lbArtistsAlbums.SelectedItem;
+            
+            if (selectedModel is Models.Album album)
+            {
+                try
+                {
+                    btnTrackSearch.Enabled = false;
+
+                    List<Models.Track> tracks = await _client.LoadAlbumTracklist(album.Id);
+
+                    if (tracks.Count == 0)
+                    {
+                        lbTracks.Items.Add("Ничего не найдено");
+                    }
+                    else
+                    {
+                        foreach (var track in tracks)
+                        {
+                            lbTracks.Items.Add(track);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка: {ex.Message}");
+                }
+                finally
+                {
+                    btnTrackSearch.Enabled = true;
+                }
             }
         }
     }
