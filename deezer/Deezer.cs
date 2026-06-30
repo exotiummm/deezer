@@ -44,7 +44,7 @@ namespace deezer
                     {
                         foreach (var artist in artists)
                         {
-                            lbArtists.Items.Add($"{artist.Name}, фанатов: {artist.Fans}");
+                            lbArtists.Items.Add(artist);
                         }
                     }
                 }
@@ -84,7 +84,7 @@ namespace deezer
                     {
                         foreach (var album in albums)
                         {
-                            lbAlbums.Items.Add($"{album.Title}, песен: {album.Nb_Tracks}");
+                            lbAlbums.Items.Add(album);
                         }
                     }
                 }
@@ -124,7 +124,6 @@ namespace deezer
                     {
                         foreach (var track in tracks)
                         {
-                            //lbTracks.Items.Add($"{track.Title}, длина: {track.MinuteDuration}");
                             lbTracks.Items.Add(track);
                         }
                     }

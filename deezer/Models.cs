@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static deezer.Models;
 
 namespace deezer
 {
@@ -30,6 +31,11 @@ namespace deezer
             {
                 get { return Nb_Fan.ToString("N0"); }
             }
+
+            public override string ToString()
+            {
+                return $"{Name}, фанатов: {Fans}";
+            }
         }
 
         public class DeezerAlbumResponse
@@ -55,6 +61,11 @@ namespace deezer
             public bool Explicit_Lyrics { get; set; }
             public Artist Artist { get; set; }
             public string Type { get; set; }
+
+            public override string ToString()
+            {
+                return $"{Title}, песен: {Nb_Tracks}";
+            }
         }
 
         public class DeezerTrackResponse
